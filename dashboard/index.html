@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Walmart Sales Analytics Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Retail Analytics</p>
+          <h1>Walmart Sales Dashboard</h1>
+        </div>
+        <label class="upload">
+          <span>Load CSV</span>
+          <input id="csvInput" type="file" accept=".csv,text/csv">
+        </label>
+      </header>
+
+      <section class="filters" aria-label="Dashboard filters">
+        <label>
+          Store
+          <select id="storeFilter"></select>
+        </label>
+        <label>
+          Holiday
+          <select id="holidayFilter">
+            <option value="all">All weeks</option>
+            <option value="1">Holiday weeks</option>
+            <option value="0">Non-holiday weeks</option>
+          </select>
+        </label>
+        <label>
+          Group By
+          <select id="groupFilter">
+            <option value="Store">Store</option>
+            <option value="Dept">Department</option>
+            <option value="Product">Product</option>
+            <option value="Category">Category</option>
+            <option value="Region">Region</option>
+            <option value="Type">Store Type</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="kpis" aria-label="Sales KPIs">
+        <article>
+          <span>Total Sales</span>
+          <strong id="totalSales">$0</strong>
+        </article>
+        <article>
+          <span>Average Weekly Sales</span>
+          <strong id="avgSales">$0</strong>
+        </article>
+        <article>
+          <span>Stores</span>
+          <strong id="storeCount">0</strong>
+        </article>
+        <article>
+          <span>Holiday Sales Share</span>
+          <strong id="holidayShare">0%</strong>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="panel wide">
+          <div class="panel-head">
+            <h2>Monthly Sales Trend</h2>
+          </div>
+          <canvas id="trendChart" width="960" height="320"></canvas>
+        </article>
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Sales by Segment</h2>
+          </div>
+          <canvas id="barChart" width="520" height="360"></canvas>
+        </article>
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Holiday Impact</h2>
+          </div>
+          <canvas id="holidayChart" width="520" height="360"></canvas>
+        </article>
+      </section>
+
+      <section class="panel table-panel">
+        <div class="panel-head">
+          <h2>Top Performers</h2>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Segment</th>
+              <th>Total Sales</th>
+              <th>Average Sales</th>
+            </tr>
+          </thead>
+          <tbody id="topTable"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
